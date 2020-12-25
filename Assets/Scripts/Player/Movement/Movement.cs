@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-namespace Player.Movement {
+namespace Player.Move {
     public class Movement : MonoBehaviour {
         [SerializeField] Transform target;
         private NavMeshAgent m_navMeshAgent;
@@ -31,4 +31,5 @@ namespace Player.Movement {
             m_navMeshAgent.destination = positionToMoveTo;
         }
     }
+    
 }

@@ -1,15 +1,18 @@
-﻿using UnityEngine;
+﻿using Player.Core;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Player.Move {
-    public class Movement : MonoBehaviour {
+    public class Movement : MonoBehaviour, IAction {
         [SerializeField] Transform target;
         private NavMeshAgent m_navMeshAgent;
         private Animator m_animator;
+        private ActionScheduler m_actionScheduler;
 
         private void Start() {
             m_animator = GetComponent<Animator>();
             m_navMeshAgent = GetComponent<NavMeshAgent>();
+            m_actionScheduler = GetComponent<ActionScheduler>();
         }
 
         private void Update() {
@@ -28,7 +31,12 @@ namespace Player.Move {
         }
 
         internal void SetMove(Vector3 positionToMoveTo) {
+            m_actionScheduler.StartAction(this);
             m_navMeshAgent.destination = positionToMoveTo;
+        }
+
+        public void CancelAction() {
+            StopMovement();
         }
     }
     

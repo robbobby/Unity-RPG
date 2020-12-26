@@ -10,7 +10,7 @@ using UnityEngine.AI;
 namespace Player.Control {
     public class PlayerController : MonoBehaviour {
         private UnityEngine.Camera m_camera;
-        private Move.Movement m_movement;
+        private Movement m_movement;
         private Fight m_fighter;
         public bool hasTarget;
 
